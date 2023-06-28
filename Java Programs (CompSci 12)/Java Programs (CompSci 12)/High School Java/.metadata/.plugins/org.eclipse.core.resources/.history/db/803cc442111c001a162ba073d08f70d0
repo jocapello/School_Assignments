@@ -1,0 +1,25 @@
+import java.util.Scanner;
+class Game1
+{
+	public static  void main ( String[]   args)			
+	{
+		Scanner input = new Scanner (System.in);
+
+		int i=0,r1,r2,die;
+		int[ ] Number1= new int[die];
+		for ( i = 0;  i < 5; i++)
+		{      //enter the grades, prompt user with course #
+			r1=(int )(Math.random( )* 6  + 1); 
+			r2=(int )(Math.random( )* 6  + 1);  
+			die=r1+r2;
+			System.out.println("Grade for course # " + (die+1) + ":");	
+			Number1[die]=input.nextInt();
+
+			
+		}
+
+		System.out.println("Here are the grades:");
+		for ( i = 0;  i < 5; i++)
+		{
+			System.out.print(Number1[i]+"  ");	
+		}}}

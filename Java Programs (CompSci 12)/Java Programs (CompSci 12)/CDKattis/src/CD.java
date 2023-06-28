@@ -1,0 +1,36 @@
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.stream.Stream;
+class CD
+{	
+	public static void main (String[]args) {
+		Scanner input = new Scanner(System.in);
+
+
+		String value=input.nextLine();
+
+		int[] intArray = Stream.of(value.split("\\s+")).mapToInt(Integer::parseInt).toArray();
+		int num=intArray[0];
+		int num1=intArray[1];
+
+		int Array [] = new int [num];
+		int Array2 [] = new int [num1];
+
+		int answer=0;
+		for (int i=0;i<num;i++) {
+			Array[i]=input.nextInt();
+		}
+		for (int i=0;i<num1;i++) {
+			Array2[i]=input.nextInt();
+			for(int j=0;j<num;j++) {
+			if (Array2[i]==Array[j]) {
+				answer++;
+			}}
+		}
+
+
+		int n = input.nextInt();
+		System.out.println(answer);
+	}
+
+}

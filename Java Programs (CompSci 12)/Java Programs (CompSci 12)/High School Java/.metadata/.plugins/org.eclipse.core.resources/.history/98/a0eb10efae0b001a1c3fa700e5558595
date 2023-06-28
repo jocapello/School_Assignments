@@ -1,0 +1,43 @@
+import java.util.Scanner;
+public class Assignment6F
+{
+    public static void main  (String [] args)
+    {
+        @SuppressWarnings({ "resource" })
+        Scanner input = new Scanner(System.in);
+        int digit,num = 1, num1 = 0, num2 = 0, total, loop, i, attempts = 0;
+        System.out.println("type in an end number");
+        loop=input.nextInt();
+ 
+        for ( i=1; i<=loop;i++)
+        {
+            num=i;
+            num1 = 0;
+            num2 = 0;
+                    do
+                    {
+                        digit=num%10;
+                        num=num/10;
+                        if(digit==1)
+                            num1=num1+1;
+                        if(digit==2)
+                            num2=num2+1;
+                    }while(num>0);
+            total = num1-num2;
+            switch(total)
+            {
+            case 1:
+                System.out.println("the number " +i+ " has 1 one more than 2");
+                System.out.println(i);
+                 attempts=attempts+1;
+                 System.out.println("there is 1 one more than 2 in "+attempts);
+               
+                break;
+           
+       
+ 
+            }
+        }
+ 
+    }
+}

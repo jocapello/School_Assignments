@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class RPS
+{	
+	public static void main(String[]args) {
+		Computer.main(args);
+	}
+	public static void main2 (int Random,int Losses,int Wins, int Draws)
+	{		
+		Scanner input=new Scanner(System.in);
+		int Number,User;
+		String choice;
+		boolean R,P,S,L,SP;
+
+		System.out.println("Rock, Paper, Scissors, Lizard or Spock?");//ask for City members
+
+		// Determine if they want choice option or not 
+		choice=input.next();
+
+		choice=choice.toLowerCase();
+
+		R=choice.startsWith("rock");
+		P=choice.startsWith("paper");
+		S=choice.startsWith("scissors");
+		L=choice.startsWith("lizard");
+		SP=choice.startsWith("spock");
+
+		if (R==true) {
+			User=0;
+			WinLose.WinLose(User,Random,Losses,Wins,Draws);
+		}
+		if (P==true) {
+			User=1;
+			WinLose.WinLose(User,Random,Losses,Wins,Draws);
+		}
+		if (S==true) {
+			User=2;
+			WinLose.WinLose(User,Random,Losses,Wins,Draws);
+		}
+		if (L==true) {
+			User=3;
+			WinLose.WinLose(User,Random,Losses,Wins,Draws);
+		}
+		if (SP==true) {
+			User=4;
+			WinLose.WinLose(User,Random,Losses,Wins,Draws);
+		}}}

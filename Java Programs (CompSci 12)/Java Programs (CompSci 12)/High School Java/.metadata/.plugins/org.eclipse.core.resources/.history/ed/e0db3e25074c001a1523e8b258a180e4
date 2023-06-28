@@ -1,0 +1,8 @@
+public class Computer {
+	public static void main(String[]args) {
+		int Random;
+		int Losses=0,Wins=0,Draws=0;
+
+		Random=(int )(Math.random( )* 5  );//choose RandomPlace row\
+		WinLose.Computer(Random);
+	}}

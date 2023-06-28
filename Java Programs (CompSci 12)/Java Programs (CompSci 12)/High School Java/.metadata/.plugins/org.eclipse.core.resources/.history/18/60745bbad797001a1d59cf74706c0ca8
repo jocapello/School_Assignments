@@ -1,0 +1,792 @@
+package src;
+
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.sql.Array;
+import java.util.Arrays;
+import java.util.Scanner;
+
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+
+public class Graphics extends JPanel implements MouseListener
+{
+	// For nicer code
+	// make a function that generates the pictures only when called
+	// more classes
+
+	// For functional code
+	// create functional turns 
+	// play out hand 
+	// Turn over crib 
+	// add math
+	// finally create winning scenarios and brag about how good i am at coding 
+
+	//creating the image variables
+	private static final String SelectedCard = null;
+	private static final String[] args = null;
+	private static BufferedImage Background = null;
+	private static BufferedImage Back = null;
+	private static BufferedImage Logo = null;
+	private static BufferedImage Rules = null;
+
+	// cards
+	private BufferedImage [] deck= new BufferedImage [52];
+
+	// int
+	static String CARD1 = null,CARD2=null;
+	boolean Catcher=true;
+	static int Points,ComputerPoints;
+	static int Hand=0,InPlay=0;
+	static int start;
+	static int card1,card2;
+	static int chose;
+	static int [] Distance= {60,120,180,240,300,360};
+	static int [] Played= {0,0,0,0,0,0,0,0,0,0,0,0,0};
+	static int RunThrough = 0;
+
+	static // points in play
+	int PIP=0;
+	static int i=0,Scene=1,j1=0,X=0;
+	static int [] CardHand= {0,0,0,0,0,0};
+	static int [] CardHandComp= {0,0,0,0,0,0};
+
+	static int [ ] Value2 = {1,2,3,4,5,6,7,8,9,10,11,12,13,1,2,3,4,5,6,7,8,9,10,11,12,13,
+			1,2,3,4,5,6,7,8,9,10,11,12,13,1,2,3,4,5,6,7,8,9,10,11,12,13,0,0};
+	static int [ ] Value = {1,2,3,4,5,6,7,8,9,10,10,10,10,1,2,3,4,5,6,7,8,9,10,10,10,10,
+			1,2,3,4,5,6,7,8,9,10,10,10,10,1,2,3,4,5,6,7,8,9,10,10,10,10,0,0};
+
+	int Red=(int) ((Math.random()*255)+1); // generate random amounts of red, green and blue
+	int Green=(int) ((Math.random()*255)+1);
+	int Blue=(int) ((Math.random()*255)+1);
+	static int Turn=1;
+	static int [] CardBacks = {0,0,0,0,0,0,0,0,0,0,0,0};
+	//(int) (Math.random()*2+1);
+
+
+	// 6th num is for a 0 point turn, 7th num is for no move
+	// track the originals 
+	static int [] RandomCards={0,0,0,0,0,0,52,0};
+	static int [] RandomCompCards={0,0,0,0,0,0,52,0};
+
+	// track the changes
+	static int [] RandomCards2={0,0,0,0,0,0,52,0};
+	static int [] RandomCompCards2={0,0,0,0,0,0,52,0};
+
+	// track the changes for drawing 
+	int [] RandomCards3={0,0,0,0,0,0};
+	static int [] RandomCompCards3={0,0,0,0,0,0};
+
+	static int r;
+	static int [ ]  Numbered = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,
+			27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52};
+	int [ ]  Numbered2 = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,
+			27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52};
+
+	public Graphics()
+	{
+		addMouseListener((MouseListener) this);
+	}
+	public void mousePressed(MouseEvent e) {   }
+	public void mouseReleased(MouseEvent e) {  }
+	public void mouseEntered(MouseEvent e) {    }
+	public void mouseExited(MouseEvent e) {   }
+
+	public void paintComponent(java.awt.Graphics g)
+	{
+		super.paintComponent(g);
+
+		if (Catcher==true)
+		{
+			//generate cards
+
+			try   // load the images 
+			{
+				//background
+				Back=ImageIO.read(new File("back.png"));
+				Background=ImageIO.read(new File("1.png"));
+				Logo=ImageIO.read(new File("logo.png"));
+				Rules=ImageIO.read(new File("Rules.png"));
+				// cards
+
+				// Clubs
+				deck[0]=ImageIO.read(new File("AC.png"));
+				deck[1]=ImageIO.read(new File("2C.png"));
+				deck[2]=ImageIO.read(new File("3C.png"));
+				deck[3]=ImageIO.read(new File("4C.png"));
+				deck[4]=ImageIO.read(new File("5C.png"));
+				deck[5]=ImageIO.read(new File("6C.png"));
+				deck[6]=ImageIO.read(new File("7C.png"));
+				deck[7]=ImageIO.read(new File("8C.png"));
+				deck[8]=ImageIO.read(new File("9C.png"));
+				deck[9]=ImageIO.read(new File("10C.png"));
+				deck[10]=ImageIO.read(new File("JC.png"));
+				deck[11]=ImageIO.read(new File("QC.png"));
+				deck[12]=ImageIO.read(new File("KC.png"));
+				// Diamonds
+				deck[13]=ImageIO.read(new File("AD.png"));
+				deck[14]=ImageIO.read(new File("2D.png"));
+				deck[15]=ImageIO.read(new File("3D.png"));
+				deck[16]=ImageIO.read(new File("4D.png"));
+				deck[17]=ImageIO.read(new File("5D.png"));
+				deck[18]=ImageIO.read(new File("6D.png"));
+				deck[19]=ImageIO.read(new File("7D.png"));
+				deck[20]=ImageIO.read(new File("8D.png"));
+				deck[21]=ImageIO.read(new File("9D.png"));
+				deck[22]=ImageIO.read(new File("10D.png"));
+				deck[23]=ImageIO.read(new File("JD.png"));
+				deck[24]=ImageIO.read(new File("QD.png"));
+				deck[25]=ImageIO.read(new File("KD.png"));
+				// Hearts				
+				deck[26]=ImageIO.read(new File("AH.png"));
+				deck[27]=ImageIO.read(new File("2H.png"));
+				deck[28]=ImageIO.read(new File("3H.png"));
+				deck[29]=ImageIO.read(new File("4H.png"));
+				deck[30]=ImageIO.read(new File("5H.png"));
+				deck[31]=ImageIO.read(new File("6H.png"));
+				deck[32]=ImageIO.read(new File("7H.png"));
+				deck[33]=ImageIO.read(new File("8H.png"));
+				deck[34]=ImageIO.read(new File("9H.png"));
+				deck[35]=ImageIO.read(new File("10H.png"));
+				deck[36]=ImageIO.read(new File("JH.png"));
+				deck[37]=ImageIO.read(new File("QH.png"));
+				deck[38]=ImageIO.read(new File("KH.png"));
+				// Spades
+				deck[39]=ImageIO.read(new File("AS.png"));
+				deck[40]=ImageIO.read(new File("2S.png"));
+				deck[41]=ImageIO.read(new File("3S.png"));
+				deck[42]=ImageIO.read(new File("4S.png"));
+				deck[43]=ImageIO.read(new File("5S.png"));
+				deck[44]=ImageIO.read(new File("6S.png"));
+				deck[45]=ImageIO.read(new File("7S.png"));
+				deck[46]=ImageIO.read(new File("8S.png"));
+				deck[47]=ImageIO.read(new File("9S.png"));
+				deck[48]=ImageIO.read(new File("10S.png"));
+				deck[49]=ImageIO.read(new File("JS.png"));
+				deck[50]=ImageIO.read(new File("QS.png"));
+				deck[51]=ImageIO.read(new File("KS.png"));
+			}
+			catch(IOException e)  		//catching if the image was not there
+			{
+				System.out.println("could not find image");
+				g.drawString("Could not find images",100,100);
+			}
+			Catcher=false;
+		}
+
+
+		if (Scene==1) {
+			//Scene screen
+
+			g.setColor(new Color(Red,Green,Blue));
+			g.fillOval(-500,-500,3000,3000);
+
+			g.drawImage(Logo, 1800,20, 100,100,this);
+
+			g.setColor(Color.BLACK);      
+			Font myFont = new Font("Arial", Font.PLAIN,100);  //Set the font to a bigger size
+			g.setFont(myFont);// write text on the screen starting at location (250,30)
+			g.drawString ("Cribbage",790,100);
+
+			g.drawString ("Play",900,450);
+			g.drawString ("How to play",750,600);
+			g.drawString ("Quit",900,750);}
+
+		repaint();
+
+		// Scene 1
+		///////////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////
+		// Scene 2
+
+		if (Scene==2) {
+			// Rules page
+			g.drawImage(Rules, 0,0, 2000,1000,this);
+
+			g.setColor(Color.RED);
+			g.fillOval(920,900,120,150);
+			g.setColor(Color.BLACK);
+			Font myFont = new Font("Arial", Font.PLAIN,20);  //Set the font to a bigger size
+			g.setFont(myFont);// write text on the screen starting at location (250,30)
+			g.drawString ("Click here to ",925,960);
+			g.drawString ("go back to the Scene",890,980);
+
+			g.drawString ("Player Points "+Points,100,100);
+			g.drawString ("Computer Points "+ComputerPoints,100,200);}	
+
+		// Scene 2
+		///////////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////
+		// Scene 3-4
+
+
+		if (Scene==3 || Scene==4) {
+			// background
+			g.drawImage(Background, 0,0, 2000,1000,this);
+			g.setColor(Color.LIGHT_GRAY);
+			Font myFont3 = new Font("Arial", Font.PLAIN,60);  //Set the font to a bigger size
+			g.setFont(myFont3);// write text on the screen starting at location (250,30)
+
+			//		// the back of the cards
+			//		for (int j=0;j<6;j++) //Draw the starting 6
+			//		{
+			//			g.drawImage(Back, 500+150*j,-50, 250,250,this);
+			//		}	
+			//		
+			//		g.setColor(Color.WHITE);    
+			//		Font myFont = new Font("Arial", Font.PLAIN,100);  //Set the font to a bigger size
+			//		g.setFont(myFont);// write text on the screen starting at location (250,30)
+			//		g.drawString ("Cribbage",850,500);
+
+			// puts the selected card in play
+			g.drawString ("Total "+PIP,250,600);
+
+			Font myFont5 = new Font("Arial", Font.PLAIN,40);  //Set the font to a bigger size
+			g.setFont(myFont5);// write text on the screen starting at location (250,30)
+			g.drawString ("Player Points "+Points,100,300);
+			g.drawString ("Computer Points "+ComputerPoints,100,400);
+			//			if (Turn==1) {
+			//			g.drawImage(deck[RandomCards[InPlay]],800,500, 200,200,this);}
+			//			if (Turn==2) {
+			//			g.drawImage(deck[RandomCompCards[X]],1000,300, 200,200,this);
+			//			}
+			//			if (Turn==3) {			
+			////			g.drawImage(deck[RandomCards[InPlay]],800,500, 200,200,this);
+			//			g.drawImage(deck[RandomCompCards[X]],1000,300, 200,200,this);
+			for (int i=0;i<6;i++) {
+				if (CardHand[i]!=0) {
+					g.drawImage(deck[RandomCards[i]],800+Distance[i],500, 200,200,this);
+
+				}
+
+				repaint();
+
+
+				if (CardHandComp[i]!=0) {
+					g.drawImage(deck[RandomCompCards[i]],1000+Distance[i],300, 200,200,this);
+				}
+			}
+			repaint();
+
+			if (Hand==2) {
+				System.out.println("InB");
+				for (int i=0; i<6; i++) {
+					if (RandomCards2[i]!=100) {
+						g.drawImage(Back, 1000+Distance[i],300, 200,200,this);
+					}
+
+					if (RandomCompCards2[i]!=100) {
+						g.drawImage(Back, 800+Distance[i],500, 200,200,this);
+					}
+				}
+				Hand=1;
+			}
+			
+			if (Hand==1) {
+
+				for (int i=0;i<6;i++) //Draw the number of cards
+				{
+					// Draw cards after there thrown
+					if (RandomCards2[i]!=100) {
+						g.drawImage(deck[RandomCards[i]], 400+200*i,700, 200,200,this);
+						repaint();
+					}
+					Font myFont2 = new Font("Arial", Font.PLAIN,30);  //Set the font to a bigger size
+					g.setFont(myFont2);// write text on the screen starting at location (250,30)
+					g.drawString ("Card"+i,400+200*i,920);
+					repaint();
+				}
+				for (int i=0;i<6;i++) //Draw the number of cards
+				{
+					// Draw cards after there thrown
+					if (RandomCompCards2[i]!=100) {
+						g.drawImage(deck[RandomCompCards[i]], 400+200*i,20, 200,200,this);
+						repaint();
+					}
+				}
+			}
+			if (Hand==0) {
+				// players hand
+				for (int i=0;i<6;i++) {
+					r=(int)(Math.random( )* 50  + 1);
+					if (Numbered[r]!=100) {
+						RandomCards[i]=Numbered[r];
+						Numbered[r]=100;
+					}
+				}
+				// computers hand
+				for (int i=0;i<6;i++) {
+					r=(int)(Math.random( )* 50  + 1);
+					if (Numbered[r]!=100) {
+						RandomCompCards[i]=Numbered[r];
+						Numbered[r]=100;
+					}
+				}
+
+				for (int i=0;i<6;i++) //Draw the number of player cards
+				{
+					g.drawImage(deck[RandomCards[i]], 400+200*i,700, 200,200,this);
+					Font myFont2 = new Font("Arial", Font.PLAIN,30);  //Set the font to a bigger size
+					g.setFont(myFont2);// write text on the screen starting at location (250,30)
+					g.drawString ("Card"+i,400+200*i,920);
+					repaint();
+				}
+				for (int i=0;i<6;i++) //Draw the number comp of cards
+				{
+					g.drawImage(deck[RandomCompCards[i]],400+200*i,20, 200,200,this);
+					Font myFont2 = new Font("Arial", Font.PLAIN,30);  //Set the font to a bigger size
+					g.setFont(myFont2);// write text on the screen starting at location (250,30)
+					g.drawString ("Card"+i,400+200*i,920);
+					repaint();
+				}
+			}
+		}
+		repaint();			        
+	}
+	public void mouseClicked(MouseEvent e) 
+	{	
+		int x=e.getX(); // get the x and y location of the mouse
+		int y=e.getY();
+		String RUsure = null,CN = null;
+		int temp[]= {0,0};
+		int temp1 = 0, temp2 = 0;
+		// the opening Scene 
+		while (Scene==1) {
+			// play
+			if (x>=900 && x<=1100 && y>=400 && y<=480)
+			{
+				Scene=3;
+			}
+			// how to play
+			if (x>=750 && x<=1300 && y>=500 && y<=620)
+			{
+				Scene=2;
+			}
+			//quit button
+			if (x>=900 && x<=100 && y>=950 && y<=1100)
+			{
+
+			}
+		}
+
+		// Scene 1
+		///////////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////
+		// Scene 2
+
+		// quit button for other features?
+		if (Scene==2) 
+		{
+			if (x>=850 && x<=1000 && y>=900 && y<=1200)
+			{
+				Scene=1;
+			}
+		}
+
+		// Scene 2
+		///////////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////
+		// Scene 3
+
+		// find out which cards to throw
+		if (Scene==3) {
+			for (int p=0;p<6;p++)//pick cards loop
+			{
+				if (x>=400+200*p && x<=400+200*p+200 && y>=700 && y<=900)//find which card is chosen
+				{
+					chose++; // if they choose 2 cards
+					//				System.out.println("The card is card "+chose);// counts the number of selected
+					//				System.out.println("The selected card is " +p);// which card 
+					RandomCards2[p]=100;
+					//				System.out.println("The given number is " +Value[RandomCards[p]]);//the value
+
+					// if face card
+					if (Value2[RandomCards[p]]==11) {
+						CN="Jack of ";}
+					if (Value2[RandomCards[p]]==12) {
+						CN="Queen of ";}
+					if (Value2[RandomCards[p]]==13) {
+						CN="King of ";}
+
+					// if it does not
+					if (Value2[RandomCards[p]]<11) {
+						CN=Value2[RandomCards[p]]+" ";}
+
+
+					Namer(Value2,RandomCards,p,CN);
+					if (CARD1.equals(CARD2) == true) { 
+						JOptionPane.showMessageDialog(null,"You cannot choose the same card twice ");
+						chose=0;
+					} 
+				}
+			}
+			if (chose==2) {
+				boolean YN;
+
+				RUsure=JOptionPane.showInputDialog("Are the cards you would like to throw are "+CARD1+" and "+CARD2);
+				//RUsure1 = Integer.parseInt(RUsure.trim());
+				RUsure=RUsure.toLowerCase();
+
+				YN=RUsure.startsWith("y");
+				if (YN==true)
+				{	
+					Hand=1;
+					// replaces all letters with empty spaces
+					CARD1 = CARD1.replaceAll("\\D+","");			
+					CARD2 = CARD2.replaceAll("\\D+","");			
+					//				System.out.println(CARD1+" and "+CARD2);
+
+					RandomSelector();
+					RandomCompCards2[X]=100;
+					RandomSelector();
+					if (RandomCompCards2[X]==100)
+					{
+						int num=1;
+						while (num==1) {
+							for (int i=0; i<6;i++) {
+								if (RandomCompCards2[i]!=100) {
+									RandomCompCards2[i]=100;
+									num=2;
+								}
+							}
+						}
+					}
+					RandomCompCards2[X]=100;
+					Scene=4;
+				}
+				else 
+				{
+					for (int p=0;p<6;p++) {
+						RandomCards2[p] = RandomCards[p];}
+					JOptionPane.showMessageDialog(null,"Select the 2 cards you would like to throw ");
+					chose=0;
+				}
+			}
+		}
+
+		// Scene 3
+		///////////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////
+		// Scene 4
+
+		// for selection during the game
+		if (Scene==4) {
+			Boolean YN;
+			int x1=e.getX(); // get the x and y location of the mouse
+			int y1=e.getY();
+
+			//JOptionPane.showMessageDialog(null,"Select a card to play ");
+
+			for (int j1=0;j1<6;j1++)//pick cards loop
+			{
+				if (x1>=400+200*j1 && x1<=400+200*j1+200 && y1>=700 && y1<=900)//find which card is chosen
+				{
+					OverPoints();
+					if (Below31==true) {
+						if (PIP+Value[RandomCards[j1]]>31) {
+							JOptionPane.showMessageDialog(null,"The card you have selected would put you over 31 ");
+							Scene=4;
+						}
+						else {
+							if (RandomCards2[j1]!=100) {
+								RUsure=JOptionPane.showInputDialog("Is the card you would like to play card "+j1);
+								YN=RUsure.startsWith("y");
+								if (YN==true)
+								{	
+									CardHand[j1]=1;
+									RandomCards2[j1]=100;		
+									InPlay=j1;
+									RunThrough++;
+									if (RunThrough<=101) {
+										X=6;
+										RunThrough=100;
+									}
+									PlayerTurn();
+
+								}
+							}
+							else {
+								Scene=4;
+							}
+						}
+					}
+					//					while (Below31==false) {
+					//						if (PIP+Value[RandomCards[0]]<=31) {
+					//							if (RandomCards2[0]!=100) {
+					//								j1=0;
+					//							}}
+					//						if (PIP+Value[RandomCards[1]]<=31) {
+					//							if (RandomCards2[1]!=100) {
+					//								j1=1;
+					//							}}
+					//						if (PIP+Value[RandomCards[2]]<=31) {
+					//							if (RandomCards2[2]!=100) {
+					//								j1=2;
+					//							}}
+					//						if (PIP+Value[RandomCards[3]]<=31) {
+					//							if (RandomCards2[3]!=100) {
+					//								j1=3;
+					//							}}
+					//						if (PIP+Value[RandomCards[4]]<=31) {
+					//							if (RandomCards2[4]!=100) {
+					//								j1=4;
+					//							}}
+					//						if (PIP+Value[RandomCards[5]]<=31) {
+					//							if (RandomCards2[5]!=100) {
+					//								j1=5;
+					//							}}
+
+					else {
+						System.out.println("In else ");
+
+						RandomCards[7]=53;
+						System.out.println("Player no play");
+						OverPoints();
+						RandomSelector();
+					}}
+
+
+
+
+				//		}
+			}
+		}		
+	}	
+	static boolean Below31 = true;
+	static boolean CompBelow31 = true;
+
+	public static void OverPoints() {
+
+		for (int i=0; i<6; i++) 
+		{
+			if (PIP+Value[RandomCards[i]]<=31) {
+				System.out.println("The value in over points"+Value[RandomCards[i]]);
+				Below31=true;
+			}
+			else Below31=false;
+		}
+
+		for (int i=0; i<6; i++) 
+		{
+			if (PIP+Value[RandomCompCards[i]]<=31) {
+				CompBelow31=true;
+			}
+			else CompBelow31=false;
+		}
+
+	}
+
+
+	public static void PlayerTurn() {
+
+		if (RandomCompCards[7]==53 && RandomCards[7]==53)
+		{
+			System.out.println("P Time to count ");	
+			Points=Points+1;
+			PIP=0;
+			Hand=2;
+		}
+
+		RunThrough=100;		// Assures player gets points
+		PointTracker(0);
+
+		InPlay=6;		// Like a pass turn
+		RunThrough++;	// Assures comp gets points
+		RandomSelector();
+		OverPoints();
+		if (CompBelow31==false) {
+			System.out.println(CompBelow31);
+			RandomCompCards[7]=1;
+			Scene=4;
+		}
+		if (RandomCompCards[7]==53 && RandomCards[7]==53)
+		{
+			System.out.println("C Time to count ");
+			ComputerPoints=ComputerPoints+1;
+			PIP=0;
+			Hand=2;
+		}
+		RandomCompCards2[X]=100;	// So it's not displayed
+		PointTracker(0);
+		if (X<6) {
+			CardHandComp[X]=1;	//	Display the cards comp has played
+		}
+		Scene=4;	// For next turn
+	}
+	public static void RandomSelector() {
+
+		X=(int)(Math.random( )* 6);
+
+		if (RandomCompCards2[X]==100) {
+			RandomSelector();
+		}
+
+		// so comp doesnt go over
+		if (PIP+Value[RandomCompCards[X]]>31) {
+			if (PIP+Value[RandomCompCards[0]]<=31) {
+				System.out.println(Value[RandomCompCards[0]]);
+				System.out.println(RandomCompCards2[0]);
+				if (RandomCompCards2[0]!=100) {
+					X=0;
+				}}
+			System.out.println("dfsdf1   "+Value[RandomCompCards[0]]);
+			if (PIP+Value[RandomCompCards[1]]<=31) {
+				System.out.println(Value[RandomCompCards[1]]);
+				System.out.println(RandomCompCards2[1]);
+				if (RandomCompCards2[1]!=100) {
+					X=1;
+				}}
+			System.out.println("dfsdf2   "+Value[RandomCompCards[1]]);
+			if (PIP+Value[RandomCompCards[2]]<=31) {
+				System.out.println(Value[RandomCompCards[2]]);
+				System.out.println(RandomCompCards2[2]);
+				if (RandomCompCards2[2]!=100) {
+					X=2;
+				}}
+			System.out.println("dfsdf3   "+Value[RandomCompCards[2]]);
+			if (PIP+Value[RandomCompCards[3]]<=31) {
+				System.out.println(Value[RandomCompCards[3]]);
+				System.out.println(RandomCompCards2[3]);
+				if (RandomCompCards2[3]!=100) {
+					X=3;
+				}}
+			System.out.println("dfsdf4   "+Value[RandomCompCards[3]]);
+			if (PIP+Value[RandomCompCards[4]]<=31) {
+				System.out.println(Value[RandomCompCards[4]]);
+				System.out.println(RandomCompCards2[4]);
+				if (RandomCompCards2[4]!=100) {
+					X=4;
+				}}
+			System.out.println("dfsdf5   "+Value[RandomCompCards[4]]);
+			if (PIP+Value[RandomCompCards[5]]<=31) {
+				System.out.println(Value[RandomCompCards[5]]);
+				System.out.println(RandomCompCards2[5]);
+				if (RandomCompCards2[5]!=100) {
+					X=5;
+				}}
+
+			else{
+				System.out.println("dfsdf6   "+Value[RandomCompCards[4]]);
+				X=7;
+				RandomCompCards[X]=53;
+				System.out.println("No play");
+			}
+		}
+
+	}
+
+
+	public static void Namer(int Value2[],int RandomCards[],int p,String CN){
+		if (chose==1) {
+			// if the number isnt a face card
+			card1=Value2[RandomCards[p]];
+			if(RandomCards[p]>=0 && RandomCards[p]<14)
+			{
+				CARD1=CN+"Club";}
+			if(RandomCards[p]>=13 && RandomCards[p]<27)
+			{
+				CARD1=CN+"Diamond";}
+			if(RandomCards[p]>=26 && RandomCards[p]<40)
+			{
+				CARD1=CN+"Heart";}
+			if(RandomCards[p]>=39 && RandomCards[p]<53)
+			{
+				CARD1=CN+"Spade";}
+		}
+		if (chose==2) {
+			card2=Value2[RandomCards[p]];
+			if(RandomCards[p]>=0 && RandomCards[p]<14)
+			{
+				CARD2=CN+"Club";}
+			if(RandomCards[p]>=13 && RandomCards[p]<27)
+			{
+				CARD2=CN+"Diamond";}
+			if(RandomCards[p]>=26 && RandomCards[p]<40)
+			{
+				CARD2=CN+"Heart";}
+			if(RandomCards[p]>=39 && RandomCards[p]<53)
+			{
+				CARD2=CN+"Spade";}
+		}
+	}
+
+	public static void PointTracker(int CheckNext) {
+		System.out.println("In points");
+		System.out.println("Player      "+Value[RandomCards[InPlay]]);
+		System.out.println("Player2      "+Value[RandomCompCards[X]]);
+		System.out.println("Player2-2      "+X);
+		System.out.println("Player2-3      "+RandomCompCards[X]);
+
+
+		// After play plays
+		if (RunThrough==100) {
+			//			System.out.println(X);
+			//			System.out.println(InPlay);
+			//			System.out.println("Card   "+RandomCards[InPlay]);
+			//			System.out.println("Value   "+Value[RandomCards[InPlay]]);
+			PIP=PIP+Value[RandomCards[InPlay]];
+
+			// if everything adds to 31, resets
+			if (PIP==31) {
+
+				Points=Points+2;
+				System.out.println("31 P");
+				for (int i=0;i<6;i++) {
+					if (RandomCompCards[i]==100) {
+						CardBacks[i]=1;
+					}
+					if (RandomCards[i]==100) {
+						CardBacks[i+6]=1;
+					}
+				}
+				System.out.println("Scene"+Scene);
+				Hand=2;
+				System.out.println("Scene"+Scene);
+				PIP=0;
+			}
+			// for 15 
+			if (PIP==15) {
+
+				Points=Points+2;
+				System.out.println("PP 15");
+
+			}
+		}
+		else {
+			if (X!=7) 
+			{
+				PIP=PIP+Value[RandomCompCards[X]];
+			}
+
+			// if everything adds to 31, resets
+			if (PIP==31) {
+
+				ComputerPoints=ComputerPoints+2;
+				System.out.println("31 P");
+				Hand=2;
+				PIP=0;
+			}
+			// for 15 
+			if (PIP==15) {
+
+				ComputerPoints=ComputerPoints+2;
+				System.out.println("PP 15");
+
+			}
+		}
+
+		// for pairs
+		// Value 2 is for face cards
+		//		if (Value2[RandomCards[InPlay]]==Value[RandomCompCards[X]]) {
+		//			Points=Points+2;
+		//			InPlay=6;
+		//			System.out.println("CHECKNEXT");
+		//
+		//		}
+	}
+}
+//REPAINT();

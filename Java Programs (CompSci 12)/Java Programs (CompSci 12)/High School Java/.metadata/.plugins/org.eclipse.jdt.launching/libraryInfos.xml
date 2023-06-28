@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<libraryInfos>
+    <libraryInfo home="C:\Users\jocap\Desktop\Eclipse Oxygen\eclipse" version="1.8.0_144">
+        <bootpath>
+            <entry path="C:\Users\jocap\Desktop\Eclipse Oxygen\eclipse\jre\lib\resources.jar"/>
+            <entry path="C:\Users\jocap\Desktop\Eclipse Oxygen\eclipse\jre\lib\rt.jar"/>
+            <entry path="C:\Users\jocap\Desktop\Eclipse Oxygen\eclipse\jre\lib\sunrsasign.jar"/>
+            <entry path="C:\Users\jocap\Desktop\Eclipse Oxygen\eclipse\jre\lib\jsse.jar"/>
+            <entry path="C:\Users\jocap\Desktop\Eclipse Oxygen\eclipse\jre\lib\jce.jar"/>
+            <entry path="C:\Users\jocap\Desktop\Eclipse Oxygen\eclipse\jre\lib\charsets.jar"/>
+            <entry path="C:\Users\jocap\Desktop\Eclipse Oxygen\eclipse\jre\lib\jfr.jar"/>
+            <entry path="C:\Users\jocap\Desktop\Eclipse Oxygen\eclipse\jre\classes"/>
+        </bootpath>
+        <extensionDirs>
+            <entry path="C:\Users\jocap\Desktop\Eclipse Oxygen\eclipse\jre\lib\ext"/>
+            <entry path="C:\Windows\Sun\Java\lib\ext"/>
+        </extensionDirs>
+        <endorsedDirs>
+            <entry path="C:\Users\jocap\Desktop\Eclipse Oxygen\eclipse\jre\lib\endorsed"/>
+        </endorsedDirs>
+    </libraryInfo>
+    <libraryInfo home="C:\Users\jocap\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.1.v20211116-1657\jre" version="17.0.1"/>
+    <libraryInfo home="C:\1570 Courses\Eclipse Oxygen\eclipse\jre" version="1.8.0_144">
+        <bootpath>
+            <entry path="C:\1570 Courses\Eclipse Oxygen\eclipse\jre\lib\resources.jar"/>
+            <entry path="C:\1570 Courses\Eclipse Oxygen\eclipse\jre\lib\rt.jar"/>
+            <entry path="C:\1570 Courses\Eclipse Oxygen\eclipse\jre\lib\sunrsasign.jar"/>
+            <entry path="C:\1570 Courses\Eclipse Oxygen\eclipse\jre\lib\jsse.jar"/>
+            <entry path="C:\1570 Courses\Eclipse Oxygen\eclipse\jre\lib\jce.jar"/>
+            <entry path="C:\1570 Courses\Eclipse Oxygen\eclipse\jre\lib\charsets.jar"/>
+            <entry path="C:\1570 Courses\Eclipse Oxygen\eclipse\jre\lib\jfr.jar"/>
+            <entry path="C:\1570 Courses\Eclipse Oxygen\eclipse\jre\classes"/>
+        </bootpath>
+        <extensionDirs>
+            <entry path="C:\1570 Courses\Eclipse Oxygen\eclipse\jre\lib\ext"/>
+            <entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
+        </extensionDirs>
+        <endorsedDirs>
+            <entry path="C:\1570 Courses\Eclipse Oxygen\eclipse\jre\lib\endorsed"/>
+        </endorsedDirs>
+    </libraryInfo>
+    <libraryInfo home="C:\Users\jocap\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.1.v20211116-1657" version="17.0.1"/>
+    <libraryInfo home="C:\1570 Courses\Eclipse Oxygen\eclipse" version="1.8.0_144">
+        <bootpath>
+            <entry path="C:\1570 Courses\Eclipse Oxygen\eclipse\jre\lib\resources.jar"/>
+            <entry path="C:\1570 Courses\Eclipse Oxygen\eclipse\jre\lib\rt.jar"/>
+            <entry path="C:\1570 Courses\Eclipse Oxygen\eclipse\jre\lib\sunrsasign.jar"/>
+            <entry path="C:\1570 Courses\Eclipse Oxygen\eclipse\jre\lib\jsse.jar"/>
+            <entry path="C:\1570 Courses\Eclipse Oxygen\eclipse\jre\lib\jce.jar"/>
+            <entry path="C:\1570 Courses\Eclipse Oxygen\eclipse\jre\lib\charsets.jar"/>
+            <entry path="C:\1570 Courses\Eclipse Oxygen\eclipse\jre\lib\jfr.jar"/>
+            <entry path="C:\1570 Courses\Eclipse Oxygen\eclipse\jre\classes"/>
+        </bootpath>
+        <extensionDirs>
+            <entry path="C:\1570 Courses\Eclipse Oxygen\eclipse\jre\lib\ext"/>
+            <entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
+        </extensionDirs>
+        <endorsedDirs>
+            <entry path="C:\1570 Courses\Eclipse Oxygen\eclipse\jre\lib\endorsed"/>
+        </endorsedDirs>
+    </libraryInfo>
+    <libraryInfo home="C:\Program Files\Java\jre1.8.0_251" version="1.8.0_251">
+        <bootpath>
+            <entry path="C:\Program Files\Java\jre1.8.0_251\lib\resources.jar"/>
+            <entry path="C:\Program Files\Java\jre1.8.0_251\lib\rt.jar"/>
+            <entry path="C:\Program Files\Java\jre1.8.0_251\lib\sunrsasign.jar"/>
+            <entry path="C:\Program Files\Java\jre1.8.0_251\lib\jsse.jar"/>
+            <entry path="C:\Program Files\Java\jre1.8.0_251\lib\jce.jar"/>
+            <entry path="C:\Program Files\Java\jre1.8.0_251\lib\charsets.jar"/>
+            <entry path="C:\Program Files\Java\jre1.8.0_251\lib\jfr.jar"/>
+            <entry path="C:\Program Files\Java\jre1.8.0_251\classes"/>
+        </bootpath>
+        <extensionDirs>
+            <entry path="C:\Program Files\Java\jre1.8.0_251\lib\ext"/>
+            <entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
+        </extensionDirs>
+        <endorsedDirs>
+            <entry path="C:\Program Files\Java\jre1.8.0_251\lib\endorsed"/>
+        </endorsedDirs>
+    </libraryInfo>
+</libraryInfos>

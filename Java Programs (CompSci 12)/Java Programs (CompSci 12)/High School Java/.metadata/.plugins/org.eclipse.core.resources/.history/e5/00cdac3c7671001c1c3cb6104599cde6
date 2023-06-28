@@ -1,0 +1,61 @@
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.stream.Stream;
+class Cetvtra
+{	
+	public static void main (String[]args) {
+		Scanner input = new Scanner(System.in);
+
+
+		String value=input.nextLine();
+
+		int[] Cord1 = Stream.of(value.split("\\s+")).mapToInt(Integer::parseInt).toArray();
+		System.out.println(Cord1[1]);
+
+		int[] Cord2 = Stream.of(value.split("\\s+")).mapToInt(Integer::parseInt).toArray();
+		System.out.println(Cord2[1]);
+
+		int[] Cord3 = Stream.of(value.split("\\s+")).mapToInt(Integer::parseInt).toArray();
+		System.out.println(Cord3[1]);
+
+		
+		int[] Cord4 = {0,0};
+ 		
+		if (Cord1[0] > Cord2[0]) {
+			Cord4[0] = Cord1[0];}
+		else if (Cord1[0] > Cord3[0]) {
+			Cord4[0] = Cord1[0];}
+		
+		else if (Cord2[0] > Cord1[0]) {
+			Cord4[0] = Cord2[0];}
+		else if (Cord2[0] > Cord3[0]) {
+			Cord4[0] = Cord3[0];}
+		
+		else if (Cord3[0] > Cord1[0]) {
+			Cord4[0] = Cord1[0];}
+		else if (Cord3[0] > Cord2[0]) {
+			Cord4[0] = Cord2[0];}
+		
+		
+		
+		if (Cord1[1] > Cord2[1]) {
+			Cord4[1] = Cord1[1];}
+		else if (Cord1[1] > Cord3[1]) {
+			Cord4[1] = Cord1[1];}
+		
+		else if (Cord2[1] > Cord1[1]) {
+			Cord4[1] = Cord2[1];}
+		else if (Cord2[1] > Cord3[1]) {
+			Cord4[1] = Cord3[1];}
+		
+		else if (Cord3[1] > Cord1[1]) {
+			Cord4[1] = Cord1[1];}
+		else if (Cord3[1] > Cord2[1]) {
+			Cord4[1] = Cord2[1];}
+		
+		System.out.println(Cord3[1]);
+		System.out.println(Arrays.toString(Cord1));
+
+	}
+
+}

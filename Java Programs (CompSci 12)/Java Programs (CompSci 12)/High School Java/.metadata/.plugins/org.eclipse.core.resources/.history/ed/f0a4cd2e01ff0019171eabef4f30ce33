@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+class Assignment6C
+{
+	public static  void main ( String[]   args)	
+	{
+		Scanner input = new Scanner (System.in);
+
+		int sum,number;
+		
+		System.out.println("Type in a number "); 
+		number=input.nextInt();
+	    for(sum=0 ;number!=0 ;number/=10)
+		{
+			sum+=number% 10;   // the remainder when you divide by 10 is the sum on the right    
+			
+		}
+	    System.out.println("Sum of sums of a number is "+sum); 
+	}}

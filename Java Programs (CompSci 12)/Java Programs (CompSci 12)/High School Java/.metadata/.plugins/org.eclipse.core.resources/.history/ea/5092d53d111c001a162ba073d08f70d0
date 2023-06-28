@@ -1,0 +1,22 @@
+import java.util.Scanner;
+class Game1
+{
+	public static  void main ( String[]   args)			
+	{
+		Scanner input = new Scanner (System.in);
+
+		int i=0;
+		int[ ] Grades= new int[5];
+		for ( i = 0;  i < 5; i++)
+		{      //enter the grades, prompt user with course #
+
+			System.out.println("Grade for course # " + (i+1) + ":");	
+
+			Grades[i]=input.nextInt();
+		}
+
+		System.out.println("Here are the grades:");
+		for ( i = 0;  i < 5; i++)
+		{
+			System.out.print(Grades[i]+"  ");	
+		}}}

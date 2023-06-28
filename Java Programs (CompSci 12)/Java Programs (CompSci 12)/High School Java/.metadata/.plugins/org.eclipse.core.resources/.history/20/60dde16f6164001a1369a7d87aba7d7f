@@ -1,0 +1,214 @@
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.util.Scanner;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+
+public class Graphics extends JPanel implements MouseListener
+{
+	// make a function that generates the pictures only when called
+	//creating the image variables
+	private static final String SelectedCard = null;
+	private BufferedImage Background = null;
+	private BufferedImage Back = null;
+	// cards
+	private BufferedImage [] deck= new BufferedImage [52];
+
+	// int 
+	boolean Catcher=true;
+	static int length=6;
+	static int [] Hand={0,0,0,0};
+	static int start;
+	static int card1[];
+	static int chose;
+	int [ ]  Value = {2, 2, 2, 2, 3, 3, 3, 3,4, 4, 4, 4, 5, 5, 5, 5,6, 6, 6, 6, 7, 7, 7, 7,
+			8, 8, 8, 8, 9, 9, 9, 9,10, 10, 10, 10, 11, 11, 11,11,12, 12, 12, 12, 1, 1, 1, 1};
+	int [ ]  Numbered = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,
+			27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52};
+
+	int r1=(int)(Math.random( )* 52  + 1);//choose RandomPlace Random
+	int r2=(int)(Math.random( )* 52  + 1);//choose RandomPlace Random
+	int r3=(int)(Math.random( )* 52  + 1);//choose RandomPlace Random
+	int r4=(int)(Math.random( )* 52  + 1);//choose RandomPlace Random
+	int r5=(int)(Math.random( )* 52  + 1);//choose RandomPlace Random
+	int r6=(int)(Math.random( )* 52  + 1);//choose RandomPlace Random
+	int [] cardList = {r1,r2,r3,r4,r5,r6};
+
+	public Graphics()
+	{
+		addMouseListener((MouseListener) this);
+	}
+	public void mousePressed(MouseEvent e) {   }
+	public void mouseReleased(MouseEvent e) {  }
+	public void mouseEntered(MouseEvent e) {    }
+	public void mouseExited(MouseEvent e) {   }
+
+	public void paintComponent(java.awt.Graphics g)
+	{
+		super.paintComponent(g);
+
+		if (Catcher==true)
+		{
+			//generate cards
+
+			try   // load the images 
+			{
+				//background
+				Background=ImageIO.read(new File("back.jfif"));
+				Back=ImageIO.read(new File("1.png"));
+				// cards
+
+				// Clubs
+				deck[0]=ImageIO.read(new File("AC.png"));
+				deck[1]=ImageIO.read(new File("2C.png"));
+				deck[2]=ImageIO.read(new File("3C.png"));
+				deck[3]=ImageIO.read(new File("4C.png"));
+				deck[4]=ImageIO.read(new File("5C.png"));
+				deck[5]=ImageIO.read(new File("6C.png"));
+				deck[6]=ImageIO.read(new File("7C.png"));
+				deck[7]=ImageIO.read(new File("8C.png"));
+				deck[8]=ImageIO.read(new File("9C.png"));
+				deck[9]=ImageIO.read(new File("10C.png"));
+				deck[10]=ImageIO.read(new File("JC.png"));
+				deck[11]=ImageIO.read(new File("QC.png"));
+				deck[12]=ImageIO.read(new File("KC.png"));
+				// Diamonds
+				deck[13]=ImageIO.read(new File("AD.png"));
+				deck[14]=ImageIO.read(new File("2D.png"));
+				deck[15]=ImageIO.read(new File("3D.png"));
+				deck[16]=ImageIO.read(new File("4D.png"));
+				deck[17]=ImageIO.read(new File("5D.png"));
+				deck[18]=ImageIO.read(new File("6D.png"));
+				deck[19]=ImageIO.read(new File("7D.png"));
+				deck[20]=ImageIO.read(new File("8D.png"));
+				deck[21]=ImageIO.read(new File("9D.png"));
+				deck[22]=ImageIO.read(new File("10D.png"));
+				deck[23]=ImageIO.read(new File("JD.png"));
+				deck[24]=ImageIO.read(new File("QD.png"));
+				deck[25]=ImageIO.read(new File("KD.png"));
+				// Hearts				
+				deck[26]=ImageIO.read(new File("AH.png"));
+				deck[27]=ImageIO.read(new File("2H.png"));
+				deck[28]=ImageIO.read(new File("3H.png"));
+				deck[29]=ImageIO.read(new File("4H.png"));
+				deck[30]=ImageIO.read(new File("5H.png"));
+				deck[31]=ImageIO.read(new File("6H.png"));
+				deck[32]=ImageIO.read(new File("7H.png"));
+				deck[33]=ImageIO.read(new File("8H.png"));
+				deck[34]=ImageIO.read(new File("9H.png"));
+				deck[35]=ImageIO.read(new File("10H.png"));
+				deck[36]=ImageIO.read(new File("JH.png"));
+				deck[37]=ImageIO.read(new File("QH.png"));
+				deck[38]=ImageIO.read(new File("KH.png"));
+				// Spades
+				deck[39]=ImageIO.read(new File("AS.png"));
+				deck[40]=ImageIO.read(new File("2S.png"));
+				deck[41]=ImageIO.read(new File("3S.png"));
+				deck[42]=ImageIO.read(new File("4S.png"));
+				deck[43]=ImageIO.read(new File("5S.png"));
+				deck[44]=ImageIO.read(new File("6S.png"));
+				deck[45]=ImageIO.read(new File("7S.png"));
+				deck[46]=ImageIO.read(new File("8S.png"));
+				deck[47]=ImageIO.read(new File("9S.png"));
+				deck[48]=ImageIO.read(new File("10S.png"));
+				deck[49]=ImageIO.read(new File("JS.png"));
+				deck[50]=ImageIO.read(new File("QS.png"));
+				deck[51]=ImageIO.read(new File("KS.png"));
+			}
+			catch(IOException e)  		//catching if the image was not there
+			{
+				System.out.println("could not find image");
+				g.drawString("Could not find images",100,100);
+			}
+			Catcher=false;
+		}
+		g.drawImage(Background, 0,0, 2000,1000,this);
+		for (int j=0;j<length;j++) //Draw the starting 6
+		{
+			g.drawImage(Back, 500+150*j,-50, 350,350,this);
+		}	
+		g.setColor(Color.WHITE);   // set up the tic tac toe grid        
+		Font myFont = new Font("Arial", Font.PLAIN,100);  //Set the font to a bigger size
+		g.setFont(myFont);// write text on the screen starting at location (250,30)
+		g.drawString ("Cribbage",850,500);
+
+		for (int i=0;i<length;i++) //Draw the starting 6
+		{
+			g.drawImage(deck[cardList[i]], 400+200*i,700, 200,200,this);
+			repaint();
+		}	
+
+		for (int i=0;i<length;i++) //Draw the number of cards
+		{
+			g.drawImage(deck[cardList[i]], 400+200*i,700, 200,200,this);
+			Font myFont2 = new Font("Arial", Font.PLAIN,30);  //Set the font to a bigger size
+			g.setFont(myFont2);// write text on the screen starting at location (250,30)
+			g.drawString ("Card"+i,400+200*i,920);
+		}	
+		//Throw();
+	}
+	public void Throw(int p,int i) {
+
+		Scanner input = null;
+		boolean x;
+		int sum,NUM1,NUM2,RUsure1;
+		String num1,num2,RUsure;
+		int temp[] = null;
+		int [ ]  Value = {2, 2, 2, 2, 3, 3, 3, 3,4, 4, 4, 4, 5, 5, 5, 5,6, 6, 6, 6, 7, 7, 7, 7,
+				8, 8, 8, 8, 9, 9, 9, 9,10, 10, 10, 10, 11, 11, 11,11,12, 12, 12, 12, 1, 1, 1, 1};
+		int [ ]  Numbered = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,
+				27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52};
+		//	while (i=0; i<2; i++) {
+		temp[0]=card1[0];
+		temp[1]=card1[1];
+		System.out.println("cardlist plus card1= "+temp[0]);
+		System.out.println("cardlist plus card1= "+temp[1]);
+
+		//		temp[1]=Value[r1];
+		//		temp[2]=Value[r1];
+
+		//	System.out.println("cardlist plus card1= "+cardList[1]+" and "+card1);
+	}
+
+	public void mouseClicked(MouseEvent e) 
+	{	
+		int selectedCard=-1;
+		int x=e.getX(); // get the x and y location of the mouse
+		int y=e.getY();
+		boolean YN;
+		int RUsure1;
+		String RUsure;
+
+		for (int p=0;p<length;p++)//pick cards loop
+		{
+			if (x>=400+200*p && x<=400+200*p+200 && y>=700 && y<=900)//find which card is chosen
+			{
+				Scanner input = new Scanner (System.in);
+				selectedCard=p;//p is the selected card
+				chose++; // if they choose 2 cards
+				System.out.println("The card is card "+chose);
+				System.out.println("The selected card is " +p);
+				card1[0]=input.nextInt();
+				card1[1]=input.nextInt();
+			}
+			if (chose==2) {
+				RUsure=JOptionPane.showInputDialog("Are the cards you would like to throw are "+card1[0]+" and "+card1[1]);
+				RUsure1 = Integer.parseInt(RUsure.trim());
+				RUsure=RUsure.toLowerCase();
+
+				YN=RUsure.startsWith("n");
+				if (YN==true)
+				{
+				}
+				else 
+				{
+					JOptionPane.showMessageDialog(null,"GOOD JOB ");
+				}
+			}
+		}
+	}}
+//REPAINT();

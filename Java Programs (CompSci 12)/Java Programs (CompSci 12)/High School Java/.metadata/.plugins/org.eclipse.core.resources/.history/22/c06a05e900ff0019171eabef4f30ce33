@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+class Assignment6C
+{
+	public static  void main ( String[]   args)	
+	{
+		Scanner input = new Scanner (System.in);
+
+		int digit,number,sum;
+		
+		System.out.println("Type in a number "); 
+		number=input.nextInt();
+		do
+		{
+			digit=number + number % 10;   // the remainder when you divide by 10 is the digit on the right    
+			number=number/10;    // divide the number by 10 to get rid of the last digit
+			System.out.println(digit);	//print the digit
+		}
+		while (number>0);  // continue until all the digits are printed
+	}}

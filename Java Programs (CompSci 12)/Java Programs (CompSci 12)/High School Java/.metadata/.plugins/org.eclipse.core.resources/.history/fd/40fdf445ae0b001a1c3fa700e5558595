@@ -1,0 +1,62 @@
+import java.util.Scanner;
+ 
+public class Assignment6F{
+    // and assignment6F
+ 
+      public static void main(String[] args) {
+ 
+            Scanner in = new Scanner(System.in);
+     
+            int number=0,i,counter=0;
+ 
+           
+             
+ 
+           
+            int num = 1;
+            for ( i = 1; num <=2 ; i += 1 )  
+                 
+            {
+                System.out.println( "input a number");
+            number = in.nextInt();   ;;
+            counter=0;
+            int digit=0;
+            {
+                  do
+                  {
+ 
+                     
+                       digit = number % 10;
+                     
+                 
+                 
+                     
+                      if (digit==1)
+                      {
+                          counter = counter + 1;
+                      }
+                 
+                     
+                      if (digit==2)
+                      {
+                          counter = counter - 1;
+                      }
+                      if (counter==1)
+                      {
+                          System.out.println(number+ "  has one more 1s then 2s ");
+ 
+                      }
+                      if (counter!=1)
+                      {
+                          System.out.println(number+ "  does not have one more 1 than it has 2s ");
+ 
+                      }
+                      number=number /= 10;
+                     
+                  }while (number !=0);
+      }
+                     
+      }
+}
+ 
+}

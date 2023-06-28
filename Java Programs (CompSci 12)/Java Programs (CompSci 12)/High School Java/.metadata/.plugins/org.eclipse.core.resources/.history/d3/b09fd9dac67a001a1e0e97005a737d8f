@@ -1,0 +1,255 @@
+
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.sql.Array;
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+
+public class Crib extends JPanel implements MouseListener
+{
+	// For nicer code
+	// make a function that generates the pictures only when called
+	// more classes
+
+	// For functional code
+	// create functional turns 
+	// play out hand 
+	// Turn over crib 
+	// add math
+	// finally create winning scenarios and brag about how good i am at coding 
+
+	// int
+	static String CARD1 = null,CARD2=null;
+	boolean Catcher=true;
+
+
+	static int Menu=1;
+
+	int Red=(int) ((Math.random()*255)+1); // generate random amounts of red, green and blue
+	int Green=(int) ((Math.random()*255)+1);
+	int Blue=(int) ((Math.random()*255)+1);
+	static int Turn=1;
+	//(int) (Math.random()*2+1);
+
+
+
+	public Crib()
+	{
+		addMouseListener((MouseListener) this);
+	}
+	public void mousePressed(MouseEvent e) {   }
+	public void mouseReleased(MouseEvent e) {  }
+	public void mouseEntered(MouseEvent e) {    }
+	public void mouseExited(MouseEvent e) {   }
+
+
+	//creating the image variables
+	private static final String SelectedCard = null;
+	private static final String[] args = null;
+	private static BufferedImage Background = null;
+	private static BufferedImage Back = null;
+	private static BufferedImage Logo = null;
+	private static BufferedImage Rules = null;
+	public void paintComponent(java.awt.Graphics g)
+	{
+		super.paintComponent(g);
+
+		if (Catcher==true)
+		{
+			//generate cards
+
+			try   // load the images 
+			{
+				//background
+				Back=ImageIO.read(new File("back.png"));
+				Background=ImageIO.read(new File("1.png"));
+				Logo=ImageIO.read(new File("logo.png"));
+				Rules=ImageIO.read(new File("Rules.png"));
+			}
+
+			catch(IOException e)  		//catching if the image was not there
+			{
+				System.out.println("could not find image");
+				g.drawString("Could not find images",100,100);
+			}
+			Catcher=false;
+		}
+
+		if (Menu==1) {
+			//menu screen
+			g.setColor(new Color(Red,Green,Blue));
+			g.fillOval(-500,-500,3000,3000);
+
+			g.drawImage(Logo, 1800,20, 100,100,this);
+
+			g.setColor(Color.BLACK);      
+			Font myFont = new Font("Arial", Font.PLAIN,100);  //Set the font to a bigger size
+			g.setFont(myFont);// write text on the screen starting at location (250,30)
+			g.drawString ("Cribbage",790,100);
+
+			g.drawString ("Play",900,450);
+			g.drawString ("How to play",750,600);
+			g.drawString ("Quit",900,750);
+		}
+
+		if (Menu==2) {
+			// Rules page
+			g.drawImage(Rules, 0,0, 2000,1000,this);
+
+			g.setColor(Color.RED);
+			g.fillOval(920,900,120,150);
+			g.setColor(Color.BLACK);
+			Font myFont = new Font("Arial", Font.PLAIN,20);  //Set the font to a bigger size
+			g.setFont(myFont);// write text on the screen starting at location (250,30)
+			g.drawString ("Click here to ",925,960);
+			g.drawString ("go back to the menu",890,980);
+		}	
+
+
+		// send to game painter
+		if (Menu==3){
+			WorkMath Game = new WorkMath();
+			Game.Draw(g);
+		}
+		repaint();
+
+	}
+	public void mouseClicked(MouseEvent e) 
+	{	
+		int x=e.getX(); // get the x and y location of the mouse
+		int y=e.getY();
+		int temp[]= {0,0};
+		int temp1 = 0, temp2 = 0;
+		// the opening menu 
+		while (Menu==1) {
+			// play
+			if (x>=900 && x<=1100 && y>=400 && y<=480)
+			{
+				Menu=3;			
+			}
+			// how to play
+			if (x>=750 && x<=1300 && y>=500 && y<=620)
+			{
+				Menu=2;
+			}
+			//quit button
+			if (x>=900 && x<=100 && y>=950 && y<=1100)
+			{
+
+			}
+		}
+	}
+
+	public void Click4Throwing2(int []RandomCards2,int [] RandomCards, int [] Value2,int x,int y) {
+		System.out.println("YES");
+		int chose=0;
+		String RUsure,CN = null;
+		boolean YN;
+
+		// find out which cards to throw
+		if (Menu==3) {
+			for (int p=0;p<6;p++)//pick cards loop
+			{
+				if (x>=400+200*p && x<=400+200*p+200 && y>=700 && y<=900)//find which card is chosen
+				{
+					chose++; // if they choose 2 cards
+					//			System.out.println("The card is card "+chose);// counts the number of selected
+					//			System.out.println("The selected card is " +p);// which card 
+					RandomCards2[p]=100;
+					//			System.out.println("The given number is " +Value[RandomCards[p]]);//the value
+
+					// if face card
+					if (Value2[RandomCards[p]]==11) {
+						CN="Jack of ";}
+					if (Value2[RandomCards[p]]==12) {
+						CN="Queen of ";}
+					if (Value2[RandomCards[p]]==13) {
+						CN="King of ";}
+
+					// if it does not
+					if (Value2[RandomCards[p]]<11) {
+						CN=Value2[RandomCards[p]]+" ";}
+
+
+					Namer(Value2,RandomCards,p,CN, chose, 0, 0);
+					if (CARD1.equals(CARD2) == true) { 
+						JOptionPane.showMessageDialog(null,"You cannot choose the same card twice ");
+						chose=0;
+					} 
+				}
+			}
+			if (chose==2) {
+				RUsure=JOptionPane.showInputDialog("Are the cards you would like to throw are "+CARD1+" and "+CARD2);
+				//RUsure1 = Integer.parseInt(RUsure.trim());
+				RUsure=RUsure.toLowerCase();
+
+				YN=RUsure.startsWith("y");
+				if (YN==true)
+				{	
+					int X=0;
+					// replaces all letters with empty spaces
+					CARD1 = CARD1.replaceAll("\\D+","");			
+					CARD2 = CARD2.replaceAll("\\D+","");			
+					//			System.out.println(CARD1+" and "+CARD2);
+
+					for (int p=0;p<6;p++) {
+						if (RandomCards2[p]!=100) {
+							//System.out.print(Value[RandomCards2[p]]+" ");
+						}}		
+					Menu=4;
+				}
+				else 
+				{
+					for (int p=0;p<6;p++) {
+						RandomCards2[p] = RandomCards[p];}
+					JOptionPane.showMessageDialog(null,"Select the 2 cards you would like to throw ");
+					chose=0;
+				}
+			}
+		}
+	}
+		
+		
+		public static void Namer(int Value2[],int RandomCards[],int p,String CN,int chose,int card1,int card2){
+			if (chose==1) {
+				// if the number isnt a face card
+					card1=Value2[RandomCards[p]];
+						if(RandomCards[p]>=0 && RandomCards[p]<14)
+						{
+							CARD1=CN+"Club";}
+								if(RandomCards[p]>=13 && RandomCards[p]<27)
+								{
+									CARD1=CN+"Diamond";}
+										if(RandomCards[p]>=26 && RandomCards[p]<40)
+										{
+											CARD1=CN+"Heart";}
+												if(RandomCards[p]>=39 && RandomCards[p]<53)
+												{
+													CARD1=CN+"Spade";}
+			}
+			if (chose==2) {
+				card2=Value2[RandomCards[p]];
+									if(RandomCards[p]>=0 && RandomCards[p]<14)
+									{
+										CARD2=CN+"Club";}
+											if(RandomCards[p]>=13 && RandomCards[p]<27)
+											{
+												CARD2=CN+"Diamond";}
+													if(RandomCards[p]>=26 && RandomCards[p]<40)
+													{
+														CARD2=CN+"Heart";}
+															if(RandomCards[p]>=39 && RandomCards[p]<53)
+															{
+																CARD2=CN+"Spade";}
+			}
+		}
+	}
+	//REPAINT();

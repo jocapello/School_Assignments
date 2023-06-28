@@ -1,0 +1,25 @@
+public class Computer {
+	public static void main(String[]args) {
+		int Random;
+		int Losses=0,Wins=0,Draws=0;
+
+		Random=(int )(Math.random( )* 5  );//choose RandomPlace row\
+
+		WinLose.Computer(Random);
+
+	}
+	public static void Outcome(int Array[][],int User,int Random,int Losses,int Draws, int Wins) {
+
+		if (Array[User][Random]==0) {
+			Losses++;
+		}
+		if (Array[User][Random]==1) {
+			Draws++;
+		}
+		if (Array[User][Random]==2) {
+			Wins++;
+		}
+		WinLose.PlayAgain(Losses,Wins,Draws);
+
+	}
+}

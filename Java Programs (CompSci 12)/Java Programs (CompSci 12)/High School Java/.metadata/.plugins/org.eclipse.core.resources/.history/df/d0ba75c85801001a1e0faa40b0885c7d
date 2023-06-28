@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+class Assignment6D
+{
+	public static  void main ( String[]   args)	
+	{
+		Scanner input = new Scanner (System.in);
+
+		int sum,number,num1=1;
+
+	    while (num1<=100)
+		{
+	    	num1+=num1;
+			number=num1% 10;   // the remainder when you divide by 10 is the sum on the right    
+		    System.out.println("The sum of the digits "+num1+ " is " +number); 
+		}
+	}}

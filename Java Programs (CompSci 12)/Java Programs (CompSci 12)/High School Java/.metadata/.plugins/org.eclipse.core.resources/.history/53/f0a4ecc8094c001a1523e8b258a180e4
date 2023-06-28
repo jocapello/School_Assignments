@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class WinLose {
+	private static final String[] args = null;
+	public static void Computer(int Random) {
+		RPS.main2(Random);
+	}
+	public static void WinLose(int User, int Random) {
+		int Losses=0,Draws=0,Wins=0;
+		int [ ][ ] Array={ 
+				{1,0,2,2,0},
+				{2,1,0,0,2},
+				{0,2,1,2,0},
+				{0,2,0,1,2},
+				{2,0,2,0,1}};
+		if (Array[User][Random]==0) {
+			System.out.println("loss");
+			Computer.Outcome(Array,User,Random,Losses,Draws,Wins);
+		}
+		if (Array[User][Random]==1) {
+			System.out.println("draw");
+			Computer.Outcome(Array,User,Random,Losses,Draws,Wins);
+		}
+		if (Array[User][Random]==2) {
+			System.out.println("Win");
+			Computer.Outcome(Array,User,Random,Losses,Draws,Wins);
+		}
+	}
+	public static void PlayAgain(int Losses,int Draws,int Wins) {
+		Scanner input=new Scanner(System.in);
+		int num;
+
+		System.out.println("Would you like to play again?(1==yes, 2==no)");
+		num=input.nextInt();
+		if (num==1) {
+			Computer.main(args);
+		}
+		else {
+			System.out.println("You lost "+Losses+ " times, drew "+Draws+" and won "+Wins+" times");
+		}
+	}}

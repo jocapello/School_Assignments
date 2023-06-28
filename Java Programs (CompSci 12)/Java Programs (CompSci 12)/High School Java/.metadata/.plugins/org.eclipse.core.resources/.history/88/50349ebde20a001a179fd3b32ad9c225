@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+class Assignment6D
+{
+	public static  void main ( String[]   args)	
+	{
+		Scanner sc=new Scanner(System.in);
+
+		int digit=0,num1=1234;
+
+	    while (num1>0)
+		{
+	    	
+			digit=num1%10;   // the remainder when you divide by 10 is the sum on the right
+			num1=num1/10;
+//     		number=number+1;
+			System.out.println("The digits  is " +digit); 
+		}
+	    System.out.println("The sum of the digits "+num1+ " is " +digit);
+	}}

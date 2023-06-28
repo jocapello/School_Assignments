@@ -1,0 +1,71 @@
+import java.util.Scanner;
+class Assignment3E
+{
+	public static void main (String[]args)
+	{
+		
+		Scanner input = new Scanner(System.in);
+		int level=0,num1, num2, sum, product, difference;
+		double quotient;
+		
+		System.out.println("Type in a what type of formula you'd like to do, (1 = Basic math, 2 = Squares and Square Roots, 3 = Trigonometry)");
+		level=input.nextInt();
+// Basic Math
+		
+		if (level == 1);
+		
+		{
+		System.out.println("Type in a number");
+		num1=input.nextInt();
+		System.out.println("Type in a second number");
+		num2=input.nextInt();
+		sum = num1+num2;
+		product = num1*num2;
+		difference = num1-num2;
+		quotient =(double) num1/num2;
+		System.out.printf("The sum is "+sum+ "\n"+ "The product is "+product+ "\n" +"The difference is "+difference +"\n" +"The quotient is "+quotient);
+		}
+		
+// Squares and Square roots
+		if (level == 2);
+		
+		{
+		double num17,square,cube,FourthPower;
+		System.out.println("Type in a number");
+		num17=input.nextDouble();
+		square = Math.pow(num1, 2.0);
+		cube = Math.pow(num1, 3.0);
+		FourthPower = Math.pow(num1, 4.0);
+		System.out.printf("The square is  " + square +"\n");
+		System.out.printf("The cube is  " + cube+ "\n");
+		System.out.printf("The Fourth Power is  "+FourthPower +"\n");
+		}
+		
+		
+		if (level == 3);
+	     {
+	    	 
+// Trigonometry
+		  
+		         System.out.println("Type in the thing you want to second function tan");   
+		         double ratio=input.nextDouble();
+		         System.out.println("Type in the thing you want to second function cos");   
+		         double ratio2=input.nextDouble();
+		         System.out.println("Type in the thing you want to second function sin");   
+		         double ratio3=input.nextDouble();
+		         double A =Math.atan(ratio);
+		         double answer=Math.toDegrees(A);
+		         System.out.println("The average :" + answer);  
+		         double A2 =Math.acos(ratio2);
+		         double answer2=Math.toDegrees(A2);
+		         System.out.println("The average :" + answer2);
+		         double A3 =Math.asin(ratio3);
+		         double answer3=Math.toDegrees(A3);
+		         System.out.println("The average :" + answer3);
+		  
+		     }
+		 }
+		}
+	}
+	}
+	

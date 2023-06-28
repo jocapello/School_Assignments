@@ -1,0 +1,18 @@
+public class Computer {
+	public static void main(String[]args) {
+		int Random;
+		int Losses=0,Wins=0,Draws=0;
+
+		Random=(int )(Math.random( )* 5  );//choose RandomPlace row\
+
+		WinLose.Computer(Random);
+
+	}
+	public static void Outcome(int Losses,int Wins,int Draws) {
+		int Losses1=0,Wins1=0,Draws1=0;
+		Losses=Losses1;
+		Wins=Wins1;
+		Draws=Draws1;
+		WinLose.PlayAgain(Losses1,Wins1,Draws1);
+	}
+}

@@ -1,0 +1,137 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
+
+public class TwentyEight extends JPanel implements ActionListener, KeyListener
+{
+
+	Timer t = new Timer(5,this);
+	int x = 500;
+	int y = 300;
+
+	public TwentyEight()//Starts timer
+	{
+		t.start();	
+		addKeyListener(this);
+		setFocusable(true);
+		setFocusTraversalKeysEnabled(false);
+	}
+	static int [][] Board = {{0,0,0,0},
+			{0,0,0,0},
+			{0,0,0,0},
+			{0,0,0,0}};
+	public void paintComponent(Graphics g) {
+
+		super.paintComponent(g);
+		// draw a black circle on the screen at location (x,y)		
+		//			g.setColor(Color.YELLOW);
+		//			g.fillOval(x,y,200,200);
+		//			
+		//			g.setColor(Color.BLACK);
+		//			g.fillOval(x+20,y+20,50,50);
+		//			g.fillOval(x+100,y+20,50,50);
+		//			
+		//			g.fillRect (x , y, 200, 20);
+		//			g.fillRect (x+30 , y, 140, -100);
+		//			
+		//			
+		//			g.setColor(Color.WHITE);
+		//			g.fillOval(x+25,y+25,15,15);
+		//			g.fillOval(x+105,y+25,15,15);
+		//
+		//			g.setColor(new Color(255,0,0));
+		//			g.fillOval(x+15,y+110,120,20);
+
+
+		int x=300,y=100;
+
+		g.setColor(Color.WHITE);
+		g.fillRect (x , y, 750, 750);
+		g.setColor(Color.GRAY);
+		for (int i=0;i<4;i++) {
+			for (int j=0;j<4;j++) {
+				g.fillRect (x+50 , y+50, 150, 150);
+				x=x+170;
+				if (Board[i][j]>0) {
+					g.setColor(Color.YELLOW);
+					g.fillRect (x+50 , y+50, 150, 150);
+					Font myFont = new Font("Arial", Font.PLAIN,100);  //Set the font to a bigger size
+					g.setFont(myFont);// write text on the screen starting at location (250,30)
+					String Mystring = "";
+					Mystring=Board[i][j]+" ";
+					g.setColor(Color.BLACK);
+					g.drawString (Mystring,x+50,y+50);
+				}
+			}
+			x=300;
+			y=y+170;
+		}
+
+
+
+
+
+
+	}
+	public static void PlayGame() {
+		System.out.println("Hi");
+	}
+	public static void SetUp(int [][] Board) {
+		int numX=(int)(Math.random( )* 3);
+		int numY=(int)(Math.random( )* 3);
+		int Val=(int)(Math.random( )* 2);
+		System.out.println(numX+" "+numY+" "+Val);
+	
+
+		if (Val==1) {
+			Board[numX][numY]=2;
+		}
+		else {
+			Board[numX][numY]=4;
+		}
+		for (int i=0;i<4;i++) {
+			for (int j=0;j<4;j++) {
+				System.out.print(Board[i][j]+" ");
+			}
+			System.out.println();
+		}
+	}
+	public void actionPerformed(ActionEvent e) {
+		// refreshes the screen every time an action is performed
+		repaint(); //performs any code in paint
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) 
+	{
+		int code = e.getKeyCode();
+		switch(code)
+		{
+		case KeyEvent.VK_DOWN:
+			SetUp(Board);
+			PlayGame();
+			y=y+40; //change y location down
+			break;
+		case KeyEvent.VK_UP:
+			y=y-40;  //change y location up
+			break;
+		case KeyEvent.VK_RIGHT:
+			x=x+40;	 //change x location right		
+			break;
+		case KeyEvent.VK_LEFT:
+			x=x-40;   //change x location left
+			break;
+		case KeyEvent.VK_SPACE:
+			// add code for other events
+			break;
+		}
+	}
+	@Override
+	public void keyReleased(KeyEvent arg0) { }
+	@Override
+	public void keyTyped(KeyEvent arg0) { }
+}
+
+
