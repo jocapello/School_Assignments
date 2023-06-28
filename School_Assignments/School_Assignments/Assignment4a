@@ -1,0 +1,13 @@
+total=0
+con=True
+while(con==True):
+    
+    num1=int(input('type in a number'))
+    total=total+num1
+    repeat=int(input('Continue?(1=yes)'))
+    if(repeat==1):
+        con=False
+    
+print('your number is',number)
+
+
